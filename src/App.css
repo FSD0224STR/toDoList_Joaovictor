@@ -1,0 +1,64 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+body {
+  background: linear-gradient( to left, rgb(21, 141, 145), rgb(101, 151, 153),rgb(157, 161, 163));
+  background-size: 400%;
+  animation: cambiarColor 25s ease-in alternate infinite;
+}
+
+@keyframes cambiarColor {
+  0%{
+    background-position: 25% 50%;
+  } 
+  50%{
+    background-position: 50% 75%;
+  }
+  100% {
+    background-position: 75% 100%;
+  }
+  
+}
+
+
+header{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  padding-top: 0px;
+
+}
+
+.logo{
+  margin-top: 0px;
+  width: 85px;
+}
+
+h1{
+  font-weight: bold;
+  font-size: 100px;
+  margin-top: 50px;
+  color: aliceblue;
+  
+}
+
+.conteiner{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.titleSecondary_list{
+  color: aliceblue;
+  font-size: 45px;
+  font-weight: bold;
+
+}

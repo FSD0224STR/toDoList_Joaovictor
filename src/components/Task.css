@@ -1,0 +1,98 @@
+
+.conteinerTask{
+    width: 500px;
+    max-width: 90%;
+    background-color: #d3e7e5;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 1px 4px 20px -1px rgba(0,0,0,0.75);
+    transition: all 1s ease-in-out;
+}
+
+.conteinerTaskCompletd{
+    background-color: #25c45a;
+    transition: all 1s ease-in-out;
+}
+
+.conteinerTask:hover{
+    transform: scale(1.05);    
+}
+
+.textDescription{
+
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+.titleDescription{
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+.titleTask{
+    font-size: 28px;
+}
+
+
+button{
+    margin: 10px;
+    border: none; 
+    color: white; 
+    padding: 14px 20px; 
+    cursor: pointer; 
+    border-radius: 10px; 
+    font-size: 14px;
+    font-weight: bold;
+}
+
+button:active{ 
+    transform: scale(0.90);
+  }
+
+.btnCompletar{
+    background-color: #04AA6D; 
+}
+.btnCompletar:hover {
+background-color: #46a049;
+}
+
+.btnEditar{
+background-color: #ff9800; 
+}
+.btnEditar:hover{
+background: #e68a00;
+}
+
+.btnEliminar{
+background-color: #f44336;
+}
+.btnEliminar:hover{
+    background: #da190b;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.inputDate{
+
+font-size: 15px;
+line-height: 10px;
+padding:0px;
+appearance: none;
+border: none;
+background:#ECF0F1;
+}
+.optionsItems{
+   margin:10px;
+   font-size: 15px;
+   font-weight: 800
+};
+
