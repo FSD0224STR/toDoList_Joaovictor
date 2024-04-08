@@ -82,13 +82,15 @@ background-color: #f44336;
 }
 
 .inputDate{
-
+width: 90px;    
+text-align: center;
 font-size: 15px;
-line-height: 10px;
+font-weight: bold;
 padding:0px;
-appearance: none;
 border: none;
-background:#ECF0F1;
+pointer-events: none;
+background-color: #d3e7e5;
+
 }
 .optionsItems{
    margin:10px;

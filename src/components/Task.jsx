@@ -24,9 +24,9 @@ export default  function Task({task,deleteTarea,}) {
 
 
             <div className='options'>
-               <div className='optionsItems'><p>Fecha de creacion  </p> <input className='inputDate'  type="date" /></div> 
+                <div className='optionsItems'><p>Fecha de creacion  </p> <input className='inputDate'  type="text" defaultValue={'21/03/2004'} /></div> 
                 <div className='optionsItems ' > <p> estado </p> { complete ? 'completed' : 'in progess'} </div>
-                <div className='optionsItems'><p>fecha de finalizacion</p> <input className='inputDate' type="date" /></div>
+                <div className='optionsItems'><p>fecha de finalizacion</p> <input className='inputDate' type="text" defaultValue={'21/03/2004'}/></div>
             </div>
 
 
