@@ -7,7 +7,7 @@ export default  function Task({task,deleteTarea,}) {
     const {id,title,description,status}=task
     const [complete, setComplete] = useState(false)
     
-    // hola meu querido 
+    
 
     return ( 
 
