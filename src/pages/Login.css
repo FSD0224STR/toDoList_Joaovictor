@@ -1,5 +1,10 @@
 
-
+.conteiner_Form{
+    display: flex;
+    justify-content: center;
+    
+    
+}
 .form{
     display: flex;
     flex-direction: column;
@@ -10,6 +15,7 @@
     height: 20rem;
     border-radius: 15px;
     margin-left: 6rem;
+    margin-right: 6rem;
     margin-top: 5rem;
     margin-bottom: 8rem;
     box-shadow: 1px 4px 20px -1px rgba(0,0,0,0.75);

@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 
@@ -34,6 +37,8 @@ body {
 }
 
 .titleSecondary_list{
+  margin:30px;
+  margin-top: 10px;
   color: aliceblue;
   font-size: 45px;
   font-weight: bold;
@@ -45,6 +50,7 @@ body {
   color:aliceblue;
   font-size: 30px;
   font-weight: bold;
+  margin-top: 50px;
 }
 
 

@@ -6,13 +6,16 @@ header{
     justify-content: center;
     margin-top: 0px;
     padding-top: 0px;
-  
+    /* flex-direction: row;
+    flex-wrap: wrap; */
   }
+
+
 
 h1{
     font-weight: bold;
     font-size: 100px;
-    margin-top: 50px;
+    margin-top: 30px;
     color: aliceblue;
     text-decoration: none;
 
@@ -24,7 +27,40 @@ h1{
 }
 
 .logo{
-    margin-top: 0px;
     width: 85px;
+    margin-bottom: 20px;
+    margin-top: 60px;
   }
-  
+
+
+  @media screen and (max-width: 480px) {
+
+    header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0px;
+      padding-top: 0px;
+      flex-direction: column-reverse;
+    }
+
+    .logo{
+
+        width: 90px;
+        margin-bottom:0px;
+        margin-top: 10px;
+
+    }
+
+
+  h1{
+    font-weight: bold;
+    font-size: 80px;
+    margin-top: 0px;
+    color: aliceblue;
+    text-decoration: none;
+
+  }
+
+       
+  }

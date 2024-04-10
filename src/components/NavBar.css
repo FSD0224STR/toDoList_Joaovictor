@@ -1,0 +1,40 @@
+
+
+.navBar{
+font-size: 25px;
+margin: 20px;
+margin-bottom: 40px;
+}
+
+.navBar_item{
+text-decoration: none;
+color: aliceblue;
+font-weight: 600;
+margin: 60px;
+background-color: rgb(83, 134, 179);
+padding: 10px;
+border-radius: 10px;
+}
+
+
+.navBar_item:hover{
+    background-color: rgb(6, 94, 172);
+}
+
+@media screen and (max-width:1165px ) {
+
+ .navBar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 15px;
+    margin-bottom: 0px;
+    
+ }
+
+
+
+ .navBar_item{
+    margin: 10px;
+ }
+    
+}
