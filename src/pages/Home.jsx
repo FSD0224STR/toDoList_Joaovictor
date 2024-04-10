@@ -4,45 +4,44 @@ import Task from "../components/Task";
 import swal from "sweetalert";
 
 function Home() {
-  // const taskList = [
-  //   {
-  //     id: 1,
-  //     title: "cambiar tipo",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "cambiar el interfaz",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "cambiar las funcionaliaddes",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "crear componentes",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  // ];
+  const taskList = [
+    {
+      id: 1,
+      title: "cambiar tipo",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
+      status: "in progress",
+    },
+    {
+      id: 2,
+      title: "cambiar el interfaz",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
+      status: "in progress",
+    },
+    {
+      id: 3,
+      title: "cambiar las funcionaliaddes",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
+      status: "in progress",
+    },
+    {
+      id: 4,
+      title: "crear componentes",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
+      status: "in progress",
+    },
+  ];
 
   const [tasks, setTasks] = useState([]);
 
 
+  //Puerta de entrada al BackEnd
   const getTasks = () => fetch('http://localhost:3000/tasks')
         .then(res => res.json()) //estoy recibiendo la cabecera headers
-        .then(data => setTasks(data)) //aqui estoy recibiendo ya el body
-
- 
+        .then(data => setTasks(data)) //aqui estoy recibiendo ya el body y seteando a task para que lo renderize
 
   useEffect(() => {
     
