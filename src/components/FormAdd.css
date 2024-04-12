@@ -1,0 +1,78 @@
+
+
+.conteinerForm{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 20px -1px rgba(0,0,0,0.75);
+    width: 600px;
+    max-width: 90%;
+}
+
+.formAddTask{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: 20px;
+    padding: 20px;
+}
+
+legend{
+    font-weight: bold;
+    font-size: 40px;
+    margin-top: 0px;
+    color: rgb(48, 74, 97);
+    
+}
+
+.itemForm{
+    margin: 10px;
+    border: none;
+    background-color:rgb(226, 232, 238); 
+    border-radius: 10px; 
+}
+
+.itemForm_title{
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.itemForm_button {
+    color: rgb(48, 74, 97);
+    font-size: 20px;
+    background-color: rgb(127, 204, 255);
+    width: 50%;
+    margin-left: 88px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width:480px ) {
+    .itemForm_button {
+
+        margin-left: 44px;
+
+    }
+}
+
+
+.itemForm_date{
+    height: 25px;
+    font-size: 18px;
+}
+
+label{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+.itemForm_textarea{
+    font-size: 18px;
+}

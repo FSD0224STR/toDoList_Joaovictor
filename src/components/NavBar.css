@@ -1,6 +1,7 @@
 
 
 .navBar{
+display: flex;
 font-size: 25px;
 margin: 20px;
 margin-bottom: 40px;
@@ -10,7 +11,7 @@ margin-bottom: 40px;
 text-decoration: none;
 color: aliceblue;
 font-weight: 600;
-margin: 60px;
+margin: 30px;
 background-color: rgb(83, 134, 179);
 padding: 10px;
 border-radius: 10px;
@@ -21,11 +22,10 @@ border-radius: 10px;
     background-color: rgb(6, 94, 172);
 }
 
-@media screen and (max-width:1165px ) {
+@media screen and (max-width:886px ) {
 
  .navBar{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+ display: flex;
     font-size: 15px;
     margin-bottom: 0px;
     

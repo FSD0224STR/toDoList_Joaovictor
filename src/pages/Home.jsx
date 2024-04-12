@@ -3,82 +3,52 @@ import { useState,useEffect } from "react";
 import Task from "../components/Task";
 import swal from "sweetalert";
 
+
+
 function Home() {
-  // const taskList = [
-  //   {
-  //     id: 1,
-  //     title: "cambiar tipo",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "cambiar el interfaz",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "cambiar las funcionaliaddes",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "crear componentes",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi nec mauris consectetur accumsan bibendum sed lacus. In vel dignissim nunc. Donec vel nulla venenatis, tempor tortor non, dignissim est. Ut non iaculis dolor, eget aliquet metus. Nulla facilisi. Sed sed lobortis nunc. Curabitur vitae congue quam.",
-  //     status: "in progress",
-  //   },
-  // ];
 
   const [tasks, setTasks] = useState([]);
 
 
-  const getTasks = () => fetch('http://localhost:3000/tasks')
-        .then(res => res.json()) //estoy recibiendo la cabecera headers
-        .then(data => setTasks(data)) //aqui estoy recibiendo ya el body
+  function getTasks (){
+    fetch('http://localhost:3000/tasks', { method:'GET'})
+        .then(res => {return  res.json()}) //estoy recibiendo la cabecera headers
+        .then(jsonResponse => setTasks(jsonResponse))//aqui estoy recibiendo ya el body
+} 
 
- 
+
 
   useEffect(() => {
     
     getTasks();
 
-  },[])
+  }, [])
+  
 
-  function OnDelete(id) {
-    
-    mostrarAlertaDelete()
-    deleteTarea(id)
 
-  }
+  const handleDelete = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    const removeTitle = tasks.find(task => task.id === id)
 
-  const mostrarAlertaDelete = () => {
+    console.log(removeTitle,'este es title remove')
     swal({
-      title: `Eliminar Tarea`,
+      title: `Eliminar esta tarea: ${removeTitle.title}`,
       text: "Estas seguro que deseas eliminar este archivo?",
       icon: "warning",
       buttons: ["No", "Si"],
     }).then((respuesta) => {
       if (respuesta) {
+       
         swal({
           text: "El archivo se ha borrado con éxito",
-          icon: "success",
-        });
+          icon: "success", });
+          setTasks(newTasks);
       }
       
     });
     
   };
 
-  function deleteTarea(id) {
-    const newTasks = tasks.filter((task) => task.id !== id);
-    setTasks(newTasks);
-  }
 
   return (
     <>
@@ -96,9 +66,7 @@ function Home() {
             <Task
               key={task.id}
               task={task}
-              deleteTarea={deleteTarea}
-              alertDelete={mostrarAlertaDelete}
-              OnDelete = {OnDelete}
+              handleDelete = {handleDelete}
             />
           ))}
         </div>

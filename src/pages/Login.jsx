@@ -8,7 +8,7 @@ function Login() {
         <input className="inputLogin" type="text" placeholder="E-mail" />
         <input className="inputLogin" type="password" placeholder="contraseña" />
             <button id='buttonLogin'> login </button>
-            <p>don't have account? <Link to='/users/singup'>Sing up!</Link></p> 
+            <p>don't have account? <Link to='/user/singup'>Sing up!</Link></p> 
     </form>
     </div>
 )

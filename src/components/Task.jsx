@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Task.css'
 
-export default  function Task({task,deleteTarea,alertDelete,OnDelete}) {
+export default  function Task({task,handleDelete}) {
      
 
     const {id,title,description,status}=task
@@ -20,8 +20,8 @@ export default  function Task({task,deleteTarea,alertDelete,OnDelete}) {
                 <h3 className='titleDescription' >descripcion</h3>
                 <p className='textDescription'>{description}</p>
                 <button className='btnCompletar'  onClick={() => setComplete(!complete)} type="button">{complete? 'completada' : 'no completada' }</button>
-                <button className='btnEditar' onClick={alertDelete} type="button">Editar </button>
-                <button className='btnEliminar' onClick={()=>OnDelete(id)} type="button">eliminar</button>
+                <button className='btnEditar'  type="button">Editar </button>
+                <button className='btnEliminar' onClick={()=>handleDelete(id)} type="button">eliminar</button>
             </div>
 
 
