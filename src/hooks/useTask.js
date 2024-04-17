@@ -3,7 +3,7 @@ import swal from 'sweetalert'
 export function useTasks() {
   const [tasks, setTasks] = useState([]);
   const [dummy, refresh] = useState(false);
-  const [selectTask, setSelectTask] = useState([])
+  const [selectTask, setSelectTask] = useState()
   const renderTasks = () => {
     fetch("http://localhost:3000/tasks", { method: "GET" })
       .then((res) => {
