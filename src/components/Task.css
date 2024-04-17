@@ -36,6 +36,12 @@
 .titleTask{
     font-size: 28px;
 }
+.titleTaskComplete,.titleDescriptionComplete,.textDescriptionComplete{
+    color: aliceblue;
+    text-decoration: line-through;
+    transition: all 1s ease-in-out;
+}
+
 
 
 button{
@@ -82,7 +88,7 @@ background-color: #f44336;
 }
 
 .inputDate{
-width: 90px;    
+width: 95px;    
 text-align: center;
 font-size: 15px;
 font-weight: bold;
@@ -90,7 +96,12 @@ padding:0px;
 border: none;
 pointer-events: none;
 background-color: #d3e7e5;
+transition: all 1s ease-in-out;
+}
 
+.inputDateComplete{
+    background-color:#25c45a; 
+    transition: all 1s ease-in-out;
 }
 .optionsItems{
    margin:10px;

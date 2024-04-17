@@ -41,8 +41,6 @@ function FormAdd() {
   const {
     form,
     errors,
-    loading,
-    reponse,
     handleChange,
     handleBlur,
     handleSubmit,
@@ -97,8 +95,8 @@ function FormAdd() {
         >
           Add Task
               </button>
-              {/* {loading && <Loader />} */}
-              {/* {Response=true ? 'mensaje enviado' : 'Mensaje no enviado'} */}
+              
+        
       </form>
     </div>
   );

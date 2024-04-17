@@ -1,34 +1,35 @@
 import { useState } from 'react';
 import './Task.css'
 
-export default  function Task({task,handleDelete}) {
+export default  function Task({task,handleDelete,handleComplete}) {
      
 
-    const {id,title,description,status}=task
-    const [complete, setComplete] = useState(false)
-    
+    const {_id,title,description,dueDate,createdAt,status}=task
+  
+    { status == true ? 'textDescription  textDescriptionComplete'   : 'textDescription'}
     
 
-    return ( 
-
+    return (
+       
+        
         
     
-        <div className={complete ? ' conteinerTask conteinerTaskCompletd' : 'conteinerTask'}>
-            <h2 className='titleTask'>{title}</h2>
+        <div className={status == true ? ' conteinerTask conteinerTaskCompletd' : 'conteinerTask'}>
+            <h2 className=  { status == true ? 'titleTask titleTaskComplete'   : 'titleTask'}>{title}</h2>
        
             <div>
-                <h3 className='titleDescription' >descripcion</h3>
-                <p className='textDescription'>{description}</p>
-                <button className='btnCompletar'  onClick={() => setComplete(!complete)} type="button">{complete? 'completada' : 'no completada' }</button>
-                <button className='btnEditar'  type="button">Editar </button>
-                <button className='btnEliminar' onClick={()=>handleDelete(id)} type="button">eliminar</button>
+                <h3 className= { status == true ? 'titleDescription titleDescriptionComplete'   : 'titleDescription'} >descripcion</h3>
+                <p className=  { status == true ? 'textDescription  textDescriptionComplete'   : 'textDescription'}>{description}</p>
+                <button className='btnCompletar'  onClick={() => handleComplete(_id)} type="button">{status !== false ? 'completed' : 'To Complete' }</button>
+                <button className='btnEditar'  type="button">Edit </button>
+                <button className='btnEliminar' onClick={()=>handleDelete(_id)} type="button">Delete</button>
             </div>
 
 
             <div className='options'>
-                <div className='optionsItems'><p>Fecha de creacion  </p> <input className='inputDate'  type="text" defaultValue={'21/03/2004'} /></div> 
-                <div className='optionsItems ' > <p> estado </p> { complete ? 'completed' : 'in progess'} </div>
-                <div className='optionsItems'><p>fecha de finalizacion</p> <input className='inputDate' type="text" defaultValue={'21/03/2004'}/></div>
+                <div className='optionsItems'><p> Create Date  </p> <input className={status== false ? 'inputDate' : 'inputDate  inputDateComplete'  } type="text" defaultValue={createdAt} /></div> 
+                <div className='optionsItems ' > <p> status </p> { status == false ? 'in progess' : 'DONE' } </div>
+                <div className='optionsItems'><p>Due Date</p> <input className={status== false ? 'inputDate' : 'inputDate  inputDateComplete'  } type="text" defaultValue={dueDate}/></div>
             </div>
 
 

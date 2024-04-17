@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
   const [reponse, setResponse] = useState(null);
 
   const navigate = useNavigate()  
@@ -23,7 +24,6 @@ export const useForm = (initialForm, validateForm) => {
     e.preventDefault();
     setErrors(validateForm(form));
     if (Object.keys(errors).length === 0) {
-      setLoading(true);
       fetch("http://localhost:3000/tasks", {
         method: "POST",
         headers: {
@@ -31,9 +31,7 @@ export const useForm = (initialForm, validateForm) => {
         },
         body: JSON.stringify(form),
       }).then((res) => {
-        setLoading(false);
         setResponse(true);
-        setTimeout(() => setResponse(false), 5000);
         navigate('/tasks') 
       });
         
@@ -43,7 +41,6 @@ export const useForm = (initialForm, validateForm) => {
   return {
     form,
     errors,
-    loading,
     reponse,
     handleChange,
     handleBlur,

@@ -1,53 +1,12 @@
 import "../App.css";
-import { useState,useEffect } from "react";
 import Task from "../components/Task";
-import swal from "sweetalert";
-
+import { useGetTasks } from "../hooks/useGetTask";
 
 
 function Home() {
 
-  const [tasks, setTasks] = useState([]);
 
-
-  function getTasks (){
-    fetch('http://localhost:3000/tasks', { method:'GET'})
-        .then(res => {return  res.json()}) //estoy recibiendo la cabecera headers
-        .then(jsonResponse => setTasks(jsonResponse))//aqui estoy recibiendo ya el body
-} 
-
-
-
-  useEffect(() => {
-    
-    getTasks();
-
-  }, [])
-  
-
-
-  const handleDelete = (id) => {
-    const newTasks = tasks.filter((task) => task.id !== id);
-    const removeTitle = tasks.find(task => task.id === id)
-
-    console.log(removeTitle,'este es title remove')
-    swal({
-      title: `Eliminar esta tarea: ${removeTitle.title}`,
-      text: "Estas seguro que deseas eliminar este archivo?",
-      icon: "warning",
-      buttons: ["No", "Si"],
-    }).then((respuesta) => {
-      if (respuesta) {
-       
-        swal({
-          text: "El archivo se ha borrado con éxito",
-          icon: "success", });
-          setTasks(newTasks);
-      }
-      
-    });
-    
-  };
+  const { tasks,handleDelete,handleComplete } = useGetTasks();
 
 
   return (
@@ -64,9 +23,10 @@ function Home() {
 
           {tasks.map((task) => (
             <Task
-              key={task.id}
+              key={task._id}
               task={task}
-              handleDelete = {handleDelete}
+              handleDelete={handleDelete}
+              handleComplete={handleComplete}
             />
           ))}
         </div>
