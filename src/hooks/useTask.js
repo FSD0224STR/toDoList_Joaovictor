@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import swal from 'sweetalert'
-export function useGetTasks() {
+export function useTasks() {
   const [tasks, setTasks] = useState([]);
   const [dummy, refresh] = useState(false);
-
+  const [selectTask, setSelectTask] = useState([])
   const renderTasks = () => {
     fetch("http://localhost:3000/tasks", { method: "GET" })
       .then((res) => {
@@ -47,6 +47,20 @@ export function useGetTasks() {
     refresh(!dummy); //para renderizar la pagina siempre que haga una petticion (es una formad e hacerlo)
   }
 
+ 
+  
+  function selectTaskById(id) {
+     
+   console.log('entrando en selecttask')
+     const taskSelect = tasks.filter(task => task._id === id)
+     console.log('esto es taskSelec',taskSelect)
+    setSelectTask(taskSelect)
+  }
+
+  console.log('esto es SETselecttask',setSelectTask)
+
+  
+
   useEffect(() => {
     renderTasks();
   }, [dummy]);
@@ -55,6 +69,8 @@ export function useGetTasks() {
     tasks,
     setTasks,
     handleDelete,
-    handleComplete
+    handleComplete,
+    selectTaskById,
+    selectTask
   };
 }

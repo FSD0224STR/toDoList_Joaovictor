@@ -1,21 +1,22 @@
-import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './Task.css'
 
-export default  function Task({task,handleDelete,handleComplete}) {
+export default  function Task({task,handleDelete,handleComplete,selectTaskById}) {
      
 
     const {_id,title,description,dueDate,createdAt,status}=task
-  
-    { status == true ? 'textDescription  textDescriptionComplete'   : 'textDescription'}
+   
+    
+   
     
 
     return (
        
-        
+       
         
     
-        <div className={status == true ? ' conteinerTask conteinerTaskCompletd' : 'conteinerTask'}>
-            <h2 className=  { status == true ? 'titleTask titleTaskComplete'   : 'titleTask'}>{title}</h2>
+    <div className={status == true ? ' conteinerTask conteinerTaskCompletd' : 'conteinerTask'}> 
+    <NavLink className={'navLink'} to={`/tasks/${_id}`} onClick={()=> selectTaskById(_id)} ><h2 className=  { status == true ? 'titleTask titleTaskComplete '   : 'titleTask '}>{title}</h2></NavLink>   
        
             <div>
                 <h3 className= { status == true ? 'titleDescription titleDescriptionComplete'   : 'titleDescription'} >descripcion</h3>
@@ -35,6 +36,6 @@ export default  function Task({task,handleDelete,handleComplete}) {
 
         </div>
 
-
+      
     );
  }

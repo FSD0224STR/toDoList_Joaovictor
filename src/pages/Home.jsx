@@ -1,12 +1,12 @@
 import "../App.css";
 import Task from "../components/Task";
-import { useGetTasks } from "../hooks/useGetTask";
+import { useTasks } from "../hooks/useTask";
 
 
 function Home() {
 
 
-  const { tasks,handleDelete,handleComplete } = useGetTasks();
+  const { tasks,handleDelete,handleComplete,selectTaskById } = useTasks();
 
 
   return (
@@ -27,6 +27,7 @@ function Home() {
               task={task}
               handleDelete={handleDelete}
               handleComplete={handleComplete}
+              selectTaskById={selectTaskById}
             />
           ))}
         </div>

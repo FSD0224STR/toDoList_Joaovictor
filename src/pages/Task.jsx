@@ -1,10 +1,26 @@
-
-function Task() { 
-
+import Task from "../components/Task";
+import { useTasks } from "../hooks/useTask";
+function TaskSelected() { 
+    const { selectTask, selectTaskById } = useTasks()
+    console.log('esto es set',selectTask)
     return (
-        <h1>TAREA SELECCIONADA</h1>
+        <div>
+            
+            {selectTask.map(task => (<Task
+                key={task._id}
+                taskById={task}
+                selectTaskById={selectTaskById}
+
+            />))}  
+
+
+
+       </div>
+        
+        
     )
+     
 }
 
 
-export default Task;
+export default TaskSelected;
