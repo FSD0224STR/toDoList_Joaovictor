@@ -2,11 +2,8 @@ import { useForm } from "../hooks/useForm";
 import "./FormAdd.css";
 // import { Loader } from "./Loader";
 
-const initialForm = {
-  title: "",
-  description: "",
-  dueDate: "",
-};
+
+
 
 const validationForm = (form) => {
   let errors = {}; // esta variable almacenara cada error que tenga
@@ -31,25 +28,40 @@ const validationForm = (form) => {
   if (!form.dueDate.trim()) {
     errors.dueDate = "El campo 'due Date' es obligatorio!";
   } //  else if (!regDate.test(form.description.trim())) {
-//     errors.dueDate = "La fecha  tiene el formato correcto dd/mm/aaaa";
-//   }
+  //     errors.dueDate = "La fecha  tiene el formato correcto dd/mm/aaaa";
+  //   }
 
   return errors;
 };
 
-function FormAdd() {
+
+
+
+function FormEdit({ edit,backToTaskList}) {
+  console.log('esto es edit en FORMEDIT', edit)
+ 
+  console.log('esto es title edit',edit._id)
+  const taskUpdate = {
+    title: edit.title,
+    description: edit.description,
+    dueDate: edit.dueDate
+  }
+  const id= edit._id
+console.log('esto es taskUpdate',taskUpdate)
+  
   const {
     form,
     errors,
     handleChange,
     handleBlur,
-    handleSubmit,
-  } = useForm(initialForm, validationForm);
+    handleUpdate
+  } = useForm(taskUpdate,validationForm,id);
+
 
   return (
     <div className="conteinerForm">
-      <form onSubmit={handleSubmit} className="formAddTask">
-        <legend>New Task</legend>
+      <form onSubmit={handleUpdate} className="formAddTask">
+        <legend>Update Task</legend>
         <input
           className="itemForm itemForm_title"
           type="text"
@@ -87,19 +99,26 @@ function FormAdd() {
             required
           />
         </label>
+
         {errors.dueDate && <p>{errors.dueDate}</p>}
         <button
           type="Submit"
           className="itemForm itemForm_button"
           value="add Task"
         >
-          Add Task
+          Update Task
+        </button>
+
+        <button
+          className="itemForm itemForm_button"
+          value="add Task"
+          onClick={backToTaskList}
+        >
+          Back to list
               </button>
-              
-        
       </form>
     </div>
   );
 }
 
-export default FormAdd;
+export default FormEdit;

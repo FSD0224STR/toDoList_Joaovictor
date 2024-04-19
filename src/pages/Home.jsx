@@ -1,14 +1,65 @@
 import "../App.css";
 import Task from "../components/Task";
+import TaskById from "../components/TaskByid";
+import FormEdit from '../components/FormEdit'
 import { useTasks } from "../hooks/useTask";
 
 
 function Home() {
 
 
-  const { tasks,handleDelete,handleComplete,selectTaskById } = useTasks();
+  const { tasks,taskId,selectTask,edit,stateEdit,handleDelete,handleComplete,handleTasksById,backToTaskList,handleEdit} = useTasks();
 
 
+
+
+
+  if (taskId === true) {
+   
+    console.log('entrando en el id',taskId)
+    return (
+
+      <div>
+          
+
+        {selectTask.map(taskById => (
+              
+          <TaskById
+            key={taskById.title}
+            taskById={taskById}
+            backToTaskList={backToTaskList}
+              
+          />
+        ))}
+      
+
+      </div>
+     
+    )
+   
+  } 
+  if (stateEdit === true) {
+    // console.log('entrando en el edit', stateEdit)
+    console.log('esto es edit en componente',edit)
+    return (
+        <div>
+    
+      
+            
+        <FormEdit
+          edit={edit}
+          backToTaskList={backToTaskList}
+          // handleUpdate={handleUpdate}
+        />
+    
+       </div>
+    )
+
+   
+    
+
+
+  }
   return (
     <>
       <main>
@@ -22,12 +73,21 @@ function Home() {
           )}
 
           {tasks.map((task) => (
+           
+            
+            
+            
             <Task
               key={task._id}
               task={task}
               handleDelete={handleDelete}
               handleComplete={handleComplete}
-              selectTaskById={selectTaskById}
+              handleTasksById={handleTasksById}
+              handleEdit={handleEdit}
+              
+            
+             
+
             />
           ))}
         </div>
@@ -35,5 +95,21 @@ function Home() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 export default Home;

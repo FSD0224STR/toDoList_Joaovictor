@@ -1,26 +1,30 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Task.css'
+import './TaskByid.css'
 
-export default  function Task({task,handleDelete,handleComplete,handleTasksById,handleEdit}) {
+
+export default  function TaskById({taskById,backToTaskList}) {
      
 
-    const {_id,title,description,dueDate,createdAt,status}=task
+    const {title,description,dueDate,createdAt,status}= taskById
+    
+    
    
+    
 
     return (
        
-       
-        
-    
+     
+    <div className='conteinerTaskId'>  
+         <h1 className="titleTaskId"> Task selected </h1>
     <div className={status == true ? ' conteinerTask conteinerTaskCompletd' : 'conteinerTask'}> 
-    <NavLink onClick={()=>handleTasksById(_id)} ><h2 className=  { status == true ? 'titleTask titleTaskComplete '   : 'titleTask '}>{title}</h2></NavLink>   
+     <h2 className=  { status == true ? 'titleTask titleTaskComplete '   : 'titleTask '}>{title}</h2>
        
             <div>
                 <h3 className= { status == true ? 'titleDescription titleDescriptionComplete'   : 'titleDescription'} >descripcion</h3>
                 <p className=  { status == true ? 'textDescription  textDescriptionComplete'   : 'textDescription'}>{description}</p>
-                <button className='btnCompletar'  onClick={() => handleComplete(_id)} type="button">{status !== false ? 'completed' : 'To Complete' }</button>
-                <button className='btnEditar' onClick={ ()=> handleEdit(_id)} type="button">Edit </button>
-                <button className='btnEliminar' onClick={()=>handleDelete(_id)} type="button">Delete</button>
+                <button className='btnBackList'  onClick={backToTaskList} type="button">Back to Task List</button>
+
             </div>
 
 
@@ -33,6 +37,6 @@ export default  function Task({task,handleDelete,handleComplete,handleTasksById,
 
         </div>
 
-      
+        </div>  
     );
  }

@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-export const useForm = (initialForm, validateForm) => {
+export const useForm = (initialForm, validateForm,id) => {
+  
+  const idForTask = id
+
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [reponse, setResponse] = useState(null);
@@ -36,7 +39,30 @@ export const useForm = (initialForm, validateForm) => {
       });
         
     }
+
   };
+
+  const handleUpdate = (e,idForTask) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+    if (Object.keys(errors).length === 0) {
+      fetch(`http://localhost:3000/tasks/${idForTask}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      }).then((res) => {
+        navigate('/tasks')
+      });
+        
+    }
+
+  };
+
+
+
+
 
   return {
     form,
@@ -45,5 +71,7 @@ export const useForm = (initialForm, validateForm) => {
     handleChange,
     handleBlur,
     handleSubmit,
+    handleUpdate
+   
   };
 };
