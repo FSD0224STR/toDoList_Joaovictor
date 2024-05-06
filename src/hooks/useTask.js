@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert'
 export function useTasks() {
   const [tasks, setTasks] = useState([]);
   const [dummy, refresh] = useState(false);
-  const [selectTask, setSelectTask] = useState([])
+  const [selectTask, setSelectTask] = useState([''])
   const [taskId ,setTaskId] = useState([false])
   const [edit, SetTaskEdit] = useState([])
   const [stateEdit,SetStateEdit]= useState(false)
@@ -14,8 +14,8 @@ export function useTasks() {
 
   
   const renderTasks = () => {
-    
-    fetch("http://localhost:3000/tasks", { method: "GET" })
+    const token = localStorage.getItem('access_token')// comprobar si estoy logueado con el token 
+    fetch("http://localhost:3000/tasks", {headers: {"authorization": `Bearer ${token}`}})
       .then((res) => {
         return res.json();
       }) //estoy recibiendo la cabecera headers
@@ -25,7 +25,6 @@ export function useTasks() {
     
   };
  
-
   async function handleDelete(id) {
     console.log(id)
     swal({
@@ -108,8 +107,13 @@ export function useTasks() {
 
   // };
 
+  // const navigate = useNavigate()
 
-  useEffect(() => {
+    useEffect(() => {
+    // const token = localStorage.getItem('access_token');
+    // if(!token) navigate('/user/login')
+    // navigate('/tasks')
+
     renderTasks();
     // handleTasksById()
     

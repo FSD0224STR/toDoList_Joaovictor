@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import './SingUp.css'
 
 function singUp() {
     
@@ -8,17 +9,17 @@ function singUp() {
     // const register = form.register
     // const handleSubmit = form.handleSubmit
     const onSubmit = (data) => console.log(data)
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("taskName")} />
-        <input {...register("dateName")} />
-        <select {...register("gender")}>
-          <option value="female">female</option>
-          <option value="male">male</option>
-          <option value="other">other</option>
-        </select>
-        <input type="submit" />
+  return (
+    <div className="registerForm">
+        <h2>Register</h2>
+        <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
+        <input {...register("Email")} placeholder="Email" />
+        <input {...register("password")} placeholder="Password"/>
+        
+
+        <input type="submit" value='Register' />
       </form>  
+      </div>
     )
 }
 

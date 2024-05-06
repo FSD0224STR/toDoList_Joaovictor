@@ -1,64 +1,49 @@
 import "../App.css";
 import Task from "../components/Task";
 import TaskById from "../components/TaskByid";
-import FormEdit from '../components/FormEdit'
+import FormEdit from "../components/FormEdit";
 import { useTasks } from "../hooks/useTask";
 
-
 function Home() {
-
-
-  const { tasks,taskId,selectTask,edit,stateEdit,handleDelete,handleComplete,handleTasksById,backToTaskList,handleEdit} = useTasks();
-
-
-
-
+  const {
+    tasks,
+    taskId,
+    selectTask,
+    edit,
+    stateEdit,
+    handleDelete,
+    handleComplete,
+    handleTasksById,
+    backToTaskList,
+    handleEdit,
+  } = useTasks();
 
   if (taskId === true) {
-   
-    console.log('entrando en el id',taskId)
+    console.log("entrando en el id", taskId);
     return (
-
       <div>
-          
-
-        {selectTask.map(taskById => (
-              
+        {selectTask.map((taskById) => (
           <TaskById
             key={taskById.title}
             taskById={taskById}
             backToTaskList={backToTaskList}
-              
           />
         ))}
-      
-
       </div>
-     
-    )
-   
-  } 
+    );
+  }
   if (stateEdit === true) {
     // console.log('entrando en el edit', stateEdit)
-    console.log('esto es edit en componente',edit)
+    console.log("esto es edit en componente", edit);
     return (
-        <div>
-    
-      
-            
+      <div>
         <FormEdit
           edit={edit}
           backToTaskList={backToTaskList}
           // handleUpdate={handleUpdate}
         />
-    
-       </div>
-    )
-
-   
-    
-
-
+      </div>
+    );
   }
   return (
     <>
@@ -73,10 +58,6 @@ function Home() {
           )}
 
           {tasks.map((task) => (
-           
-            
-            
-            
             <Task
               key={task._id}
               task={task}
@@ -84,10 +65,6 @@ function Home() {
               handleComplete={handleComplete}
               handleTasksById={handleTasksById}
               handleEdit={handleEdit}
-              
-            
-             
-
             />
           ))}
         </div>
@@ -95,21 +72,5 @@ function Home() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 
 export default Home;

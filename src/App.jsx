@@ -7,16 +7,29 @@ import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import SingUp from "./pages/SingUp";
 import NavSearch from "./pages/Search";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
+  const navigate = useNavigate()
+  const token = localStorage.getItem('access_token');
+
+  useEffect(() => {
+    
+    const token = localStorage.getItem('access_token');
+    console.log('esto es token',token)
+    if(!token) navigate('/user/login')
+      
+  }, []);
+
+
   return (
     <>
-      <BrowserRouter>
+      
         <Header /> 
-        <NavBar/>
+        {!token ? null : <NavBar/>} 
         <Routes>
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/user/login" element={<Login />}></Route>
           <Route path="/user/singup" element={<SingUp />}></Route>
           <Route path="/tasks" element={<Home />}></Route>
@@ -25,7 +38,7 @@ function App() {
           <Route path="tasks/search" element={<NavSearch/>}></Route>
           <Route path="/*" element={<NoPages />}></Route>
         </Routes>
-      </BrowserRouter>
+   
     </>
   );
 }

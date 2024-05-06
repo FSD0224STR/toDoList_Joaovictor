@@ -1,0 +1,16 @@
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+input{
+    margin: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
